@@ -6,6 +6,7 @@ run the following commands:
 npm install
 browserify main.js -o app.js
 python -m SimpleHTTPServer 8000
+python3 -m http.server 8000
 ```
 
 Open your browser to view the app running at ```localhost:8000```

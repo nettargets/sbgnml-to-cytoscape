@@ -1,20 +1,22 @@
 var convert = require('sbgnml-to-cytoscape');
 
-var getText = function (fname) {
-  fetch(fname).then(function (res) {
-    console.log('here');
-    return res.text();
-  }).then(function (data) {
-    return data;
-  });
-};
+const getXml = async (fname) => {
+  const response = await fetch(fname)
+  if (response.status === 200) {
+    return await response.text();
+  } else {
+    throw new Error('Unable to get your location')
+  }
+}
 
 var toJson = function (obj) {
   return JSON.stringify(obj, null, 4);
 };
 
-var xmlText = getText('activated_stat1alpha_induction_of_the_irf1_gene.xml');
+var xmlText = getXml('activated_stat1alpha_induction_of_the_irf1_gene.xml').then((data) => {
+    console.log(data);
+    var cyGraph = convert(data);
+    console.log(toJson(cyGraph));
 
-
-var cyGraph = convert(xmlText);
-console.log(cyGraph);
+    document.getElementById("app").innerHTML = toJson(cyGraph);
+  });

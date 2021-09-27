@@ -4,8 +4,9 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "sbgnml-to-cytoscape": "^0.1.0",
-    "browserify": "~13.1.1"
+    "browserify": "~13.1.1",
+    "cytoscape-sbgn-stylesheet": "^4.0.2",
+    "sbgnml-to-cytoscape": "^0.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
